@@ -1,8 +1,8 @@
 #pragma kernel GenerateNoise
 #pragma kernel GenerateNoisePlane
 
-#include "Includes\FastNoiseLite.compute"
-#include "Includes\MetricsCompute.compute"
+#include "./Includes/FastNoiseLite.compute"
+#include "./Includes/MetricsCompute.compute"
 
 RWStructuredBuffer<float> _Weights;
 
