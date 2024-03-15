@@ -26,13 +26,13 @@ float valCalc(float3 pos){
     float z = pos.z;
     switch(_Function){
         case 0:
-            val = sqrt((x - 3) * (y - 3)) - z; // Cobb-Douglas
+            val = sqrt((x + 4) * (y + 4)) - 2.5*z; // Cobb-Douglas
             break;
         case 1:
-            val = min((x - 3), (y - 3)) - z; // Leontief (Perfect Complements)
+            val = min((x + 4), (y + 4)) - z; // Leontief (Perfect Complements)
             break; 
         case 2:
-            val = (x - 3) + (y - 3) - z; // Linear (Perfect Substitutes)
+            val = (x + 4) + (y + 4) - z; // Linear (Perfect Substitutes)
             break;
     }
 
