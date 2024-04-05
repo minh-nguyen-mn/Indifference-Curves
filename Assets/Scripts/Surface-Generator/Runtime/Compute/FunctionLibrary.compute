@@ -1,0 +1,98 @@
+#pragma kernel GenerateNoise
+#pragma kernel GenerateNoisePlane
+
+#include "./Includes/FastNoiseLite.compute"
+#include "./Includes/MetricsCompute.compute"
+
+RWStructuredBuffer<float> _Weights;
+
+uint _IsPlane;
+uint _Function;
+float _Size;
+float _Scale;
+float _Amplitude;
+float _Frequency;
+float _OtherSize;
+float3 _Offset;
+float3 _PlaneRight;
+float3 _PlaneForward;
+uint _Orientation;
+
+
+float valCalc(float3 pos){
+    float val = 0;
+    float x = pos.x;
+    float y = pos.y;
+    float z = pos.z;
+    switch(_Function){
+        case 0:
+            val = sqrt((x + 4) * (y + 4)) - 2.5*z; // Cobb-Douglas
+            break;
+        case 1:
+            val = min((x + 4), (y + 4)) - z; // Leontief (Perfect Complements)
+            break; 
+        case 2:
+            val = (x + 4) + (y + 4) - z; // Linear (Perfect Substitutes)
+            break;
+    }
+
+    return val;
+}
+
+float3 ExchangeAxis(float3 vec){
+    float3 newVec = vec;
+    switch(_Orientation){        
+        case 0:
+            newVec.z = vec.y;
+            newVec.y = vec.z;
+            break;
+        case 1:
+            newVec.y = vec.x;
+            newVec.z = vec.y;
+            newVec.x = vec.z;
+            break;
+        case 2:
+            newVec.z = vec.x;
+            newVec.x = vec.z;
+            break;
+    }
+    return newVec;
+}
+
+
+
+[numthreads(numThreads, numThreads, numThreads)]
+void GenerateNoise(uint3 id : SV_DispatchThreadID)
+{
+    
+    float3 pos = ((id - float3(1, 1, 1) * _ChunkSize / 2.0f)*_OtherSize + _Offset) / _Scale;
+    _Weights[indexFromCoord(id.x, id.y, id.z)] = 0;
+    pos = ExchangeAxis(pos);
+
+    float val = valCalc(pos);
+
+    if (val <= _Amplitude)
+    {
+        float sigmoid = 1 / (1 + exp(val));
+        _Weights[indexFromCoord(id.x, id.y, id.z)] = sigmoid;        
+    }
+}
+
+[numthreads(numThreads, numThreads, 1)]
+void GenerateNoisePlane(uint3 id : SV_DispatchThreadID)
+{
+
+    float3 pos = ((id.x - _ChunkSize / 2.0f) * _PlaneRight + (id.y - _ChunkSize / 2.0f) * _PlaneForward + _Offset) / _Scale;
+    _Weights[indexFromCoord(id.x, id.y, 0)] = 0;
+    pos = ExchangeAxis(pos);
+    
+
+    float val = valCalc(pos);
+
+    if (val <= _Amplitude)
+    {
+        float sigmoid = 1 / (1 + exp(val));
+        _Weights[indexFromCoord(id.x, id.y, 0)] = sigmoid;
+        
+    }
+}
