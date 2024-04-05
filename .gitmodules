@@ -1,0 +1,3 @@
+[submodule "Surface-Generator"]
+	path = Surface-Generator
+	url = https://github.com/GCIEL-Mathematics/Surface-Generator.git
