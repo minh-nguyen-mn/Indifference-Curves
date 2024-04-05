@@ -222,6 +222,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "edu.grinnell.gciel.surface-generator": {
+      "version": "https://github.com/GCIEL-Mathematics/Surface-Generator.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f78094062eccd4d9129bd401edecae5a2b2ec1de"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
