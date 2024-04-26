@@ -1702,64 +1702,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 638185521}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &658935473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 658935475}
-  - component: {fileID: 658935474}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &658935474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658935473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c1ea547b09bd74f99cf830af221d8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surfacePrefab: {fileID: 7142385589057017290, guid: 9cc1b1c5d82484823a212ce24e5bea0b,
-    type: 3}
-  rightToggle:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Right Toggle
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 4281cde6-83c3-41c0-8ab9-b4d0866076f7
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
---- !u!4 &658935475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658935473}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1217103, y: 0.96121496, z: -19.289923}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &674141763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5130,4 +5072,3 @@ SceneRoots:
   - {fileID: 513764504}
   - {fileID: 8738363}
   - {fileID: 313048687}
-  - {fileID: 658935475}

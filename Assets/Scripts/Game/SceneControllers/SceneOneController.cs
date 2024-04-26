@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class SceneOneController : MonoBehaviour
 {
     public GameObject surfacePrefab;
     private Surface[] surfaces;
     private int currentSurfaceIndex = 0;
+    private XRController xrController;
+    private InputAction gripAction;
 
     void Start()
     {
@@ -15,15 +19,22 @@ public class SceneOneController : MonoBehaviour
             surfaces[i].function = i; // Set function parameter
             surfaces[i].gameObject.SetActive(false);
         }
+
+        // Get the XR controller
+        xrController = GetComponent<XRController>();
+
+
+        // Subscribe to the grip input action
+        gripAction = new InputAction("grip", binding: "<XRController>{LeftHand}/grip");
+        gripAction.performed += OnGripPerformed;
+        gripAction.Enable();
+        
         ShowNextSurface();
     }
 
-    void Update()
+    void OnGripPerformed(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowNextSurface();
-        }
+        ShowNextSurface();
     }
 
     void ShowNextSurface()
@@ -31,5 +42,11 @@ public class SceneOneController : MonoBehaviour
         surfaces[currentSurfaceIndex].gameObject.SetActive(false);
         currentSurfaceIndex = (currentSurfaceIndex + 1) % 3;
         surfaces[currentSurfaceIndex].gameObject.SetActive(true);
+    }
+
+    // Clean up the input system
+    void OnDestroy()
+    {
+        gripAction.Disable();
     }
 }
