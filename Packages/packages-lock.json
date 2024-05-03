@@ -222,12 +222,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "edu.grinnell.gciel.surface-generator": {
-      "version": "file:/Users/juliankim/Documents/Programming/SurfaceGenerator",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
