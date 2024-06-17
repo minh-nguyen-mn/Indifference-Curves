@@ -1457,7 +1457,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: NaN, z: 4e-45, w: 2.242404e+26}
+  m_BoundingSphereOverride: {x: 4e-45, y: 0, z: 4.5697343e-37, w: 0.000015147329}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2489,7 +2489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 40bab7792882e48a28bcb955205be448, type: 2}
+  - {fileID: 2100000, guid: 02a86428a3c37417bb470e2d20f42202, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
